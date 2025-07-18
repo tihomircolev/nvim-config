@@ -22,11 +22,11 @@ end
 
 local plugin_specs = {
   -- auto-completion engine
-  { "hrsh7th/cmp-nvim-lsp", lazy = true },
-  { "hrsh7th/cmp-path", lazy = true },
-  { "hrsh7th/cmp-buffer", lazy = true },
-  { "hrsh7th/cmp-omni", lazy = true },
-  { "hrsh7th/cmp-cmdline", lazy = true },
+  { "hrsh7th/cmp-nvim-lsp",                lazy = true },
+  { "hrsh7th/cmp-path",                    lazy = true },
+  { "hrsh7th/cmp-buffer",                  lazy = true },
+  { "hrsh7th/cmp-omni",                    lazy = true },
+  { "hrsh7th/cmp-cmdline",                 lazy = true },
   { "quangnguyen30192/cmp-nvim-ultisnips", lazy = true },
   {
     "hrsh7th/nvim-cmp",
@@ -36,6 +36,7 @@ local plugin_specs = {
       require("config.nvim-cmp")
     end,
   },
+  { 'matze/vim-move' },
   -- {
   --   "saghen/blink.cmp",
   --   -- optional: provides snippets for the snippet source
@@ -130,14 +131,14 @@ local plugin_specs = {
     ft = { "markdown" },
   },
   -- A list of colorscheme plugin you may want to try. Find what suits you.
-  { "navarasu/onedark.nvim", lazy = true },
-  { "sainnhe/edge", lazy = true },
-  { "sainnhe/sonokai", lazy = true },
-  { "sainnhe/gruvbox-material", lazy = true },
-  { "sainnhe/everforest", lazy = true },
-  { "EdenEast/nightfox.nvim", lazy = true },
-  { "catppuccin/nvim", name = "catppuccin", lazy = true },
-  { "olimorris/onedarkpro.nvim", lazy = true },
+  { "navarasu/onedark.nvim",       lazy = true },
+  { "sainnhe/edge",                lazy = true },
+  { "sainnhe/sonokai",             lazy = true },
+  { "sainnhe/gruvbox-material",    lazy = true },
+  { "sainnhe/everforest",          lazy = true },
+  { "EdenEast/nightfox.nvim",      lazy = true },
+  { "catppuccin/nvim",             name = "catppuccin", lazy = false },
+  { "olimorris/onedarkpro.nvim",   lazy = true },
   { "marko-cerovac/material.nvim", lazy = true },
   {
     "rockyzhang24/arctic.nvim",
@@ -145,17 +146,17 @@ local plugin_specs = {
     name = "arctic",
     branch = "v2",
   },
-  { "rebelot/kanagawa.nvim", lazy = true },
+  { "rebelot/kanagawa.nvim",        lazy = true },
   { "miikanissi/modus-themes.nvim", priority = 1000 },
-  { "wtfox/jellybeans.nvim", priority = 1000 },
-  { "projekt0n/github-nvim-theme", name = "github-theme" },
+  { "wtfox/jellybeans.nvim",        priority = 1000 },
+  { "projekt0n/github-nvim-theme",  name = "github-theme" },
   { "e-ink-colorscheme/e-ink.nvim", priority = 1000 },
-  { "ficcdaf/ashen.nvim", priority = 1000 },
-  { "savq/melange-nvim", priority = 1000 },
-  { "Skardyy/makurai-nvim", priority = 1000 },
-  { "vague2k/vague.nvim", priority = 1000 },
-  { "webhooked/kanso.nvim", priority = 1000 },
-  { "zootedb0t/citruszest.nvim", priority = 1000 },
+  { "ficcdaf/ashen.nvim",           priority = 1000 },
+  { "savq/melange-nvim",            priority = 1000 },
+  { "Skardyy/makurai-nvim",         priority = 1000 },
+  { "vague2k/vague.nvim",           priority = 1000 },
+  { "webhooked/kanso.nvim",         priority = 1000 },
+  { "zootedb0t/citruszest.nvim",    priority = 1000 },
 
   -- plugins to provide nerdfont icons
   {
@@ -223,7 +224,7 @@ local plugin_specs = {
     opts = {},
     init = function()
       vim.o.foldcolumn = "1" -- '0' is not bad
-      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
     end,
@@ -243,7 +244,7 @@ local plugin_specs = {
     end,
   },
 
-  { "nvim-lua/plenary.nvim", lazy = true },
+  { "nvim-lua/plenary.nvim",    lazy = true },
 
   -- For Windows and Mac, we can open an URL in the browser. For Linux, it may
   -- not be possible since we maybe in a server which disables GUI.
@@ -257,7 +258,7 @@ local plugin_specs = {
     enabled = function()
       return vim.g.is_win or vim.g.is_mac
     end,
-    config = true, -- default settings
+    config = true,      -- default settings
     submodules = false, -- not needed, submodules are required only for tests
   },
 
@@ -300,7 +301,7 @@ local plugin_specs = {
   -- 'mg979/vim-visual-multi'
 
   -- Show undo history visually
-  { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } },
+  { "simnalamburt/vim-mundo",    cmd = { "MundoToggle", "MundoShow" } },
 
   -- Manage your yank history
   {
@@ -312,10 +313,10 @@ local plugin_specs = {
   },
 
   -- Handy unix command inside Vim (Rename, Move etc.)
-  { "tpope/vim-eunuch", cmd = { "Rename", "Delete" } },
+  { "tpope/vim-eunuch",          cmd = { "Rename", "Delete" } },
 
   -- Repeat vim motions
-  { "tpope/vim-repeat", event = "VeryLazy" },
+  { "tpope/vim-repeat",          event = "VeryLazy" },
 
   { "nvim-zh/better-escape.vim", event = { "InsertEnter" } },
 
@@ -346,16 +347,16 @@ local plugin_specs = {
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
       -- Only one of these is needed.
-      "ibhagwan/fzf-lua", -- optional
+      "ibhagwan/fzf-lua",       -- optional
     },
     event = "User InGitRepo",
   },
 
   -- Better git log display
-  { "rbong/vim-flog", cmd = { "Flog" } },
+  { "rbong/vim-flog",                   cmd = { "Flog" } },
   {
     "akinsho/git-conflict.nvim",
     version = "*",
@@ -398,7 +399,7 @@ local plugin_specs = {
   { "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } },
 
   -- Vim tabular plugin for manipulate tabular, required by markdown plugins
-  { "godlygeek/tabular", ft = { "markdown" } },
+  { "godlygeek/tabular",                ft = { "markdown" } },
 
   -- Markdown previewing (only for Mac and Windows)
   {
@@ -418,11 +419,11 @@ local plugin_specs = {
     ft = { "markdown" },
   },
 
-  { "chrisbra/unicode.vim", keys = { "ga" }, cmd = { "UnicodeSearch" } },
+  { "chrisbra/unicode.vim",   keys = { "ga" },   cmd = { "UnicodeSearch" } },
 
   -- Additional powerful text object for vim, this plugin should be studied
   -- carefully to use its full power
-  { "wellle/targets.vim", event = "VeryLazy" },
+  { "wellle/targets.vim",     event = "VeryLazy" },
 
   -- Plugin to manipulate character pairs quickly
   { "machakann/vim-sandwich", event = "VeryLazy" },
@@ -448,12 +449,12 @@ local plugin_specs = {
   },
 
   -- Modern matchit implementation
-  { "andymass/vim-matchup", event = "BufRead" },
-  { "tpope/vim-scriptease", cmd = { "Scriptnames", "Messages", "Verbose" } },
+  { "andymass/vim-matchup",     event = "BufRead" },
+  { "tpope/vim-scriptease",     cmd = { "Scriptnames", "Messages", "Verbose" } },
 
   -- Asynchronous command execution
-  { "skywind3000/asyncrun.vim", lazy = true, cmd = { "AsyncRun" } },
-  { "cespare/vim-toml", ft = { "toml" }, branch = "main" },
+  { "skywind3000/asyncrun.vim", lazy = true,                                   cmd = { "AsyncRun" } },
+  { "cespare/vim-toml",         ft = { "toml" },                               branch = "main" },
 
   -- Edit text area in browser using nvim
   {
@@ -489,7 +490,7 @@ local plugin_specs = {
   },
 
   -- Session management plugin
-  { "tpope/vim-obsession", cmd = "Obsession" },
+  { "tpope/vim-obsession",   cmd = "Obsession" },
 
   {
     "ojroques/vim-oscyank",
@@ -554,23 +555,26 @@ local plugin_specs = {
       },
     },
   },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   dependencies = {
+  --     { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+  --   },
+  --   opts = {
+  --     debug = true, -- Enable debugging
+  --     -- See Configuration section for rest
+  --   },
+  --   cmd = { "CopilotChat" },
+  -- },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   config = function()
+  --     require("config.copilot")
+  --   end,
+  -- },
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-    },
-    opts = {
-      debug = true, -- Enable debugging
-      -- See Configuration section for rest
-    },
-    cmd = { "CopilotChat" },
-  },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    config = function()
-      require("copilot").setup {}
-    end,
+    "github/copilot.vim",
   },
   {
     "smjonas/live-command.nvim",
