@@ -1,0 +1,17 @@
+one time setup
+git remote add upstream https://github.com/ORIGINAL_OWNER/repo-name.git
+
+
+
+# Fetch the latest changes from the original repo
+git fetch upstream
+
+# Switch to your main branch (if not already there)
+git checkout main
+
+# Merge the changes from the original repo
+git merge upstream/main
+
+
+#Push the updates to your work
+git push origin main
