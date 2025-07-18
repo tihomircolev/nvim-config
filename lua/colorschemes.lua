@@ -57,7 +57,7 @@ M.colorscheme_conf = {
 })
 
 -- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "catppuccin-macchiato"
   end,
   --onedark = function()
   --  -- Lua
