@@ -38,3 +38,5 @@ local color_scheme = require("colorschemes")
 
 -- Load a random colorscheme
 color_scheme.rand_colorscheme()
+
+vim.opt.shell = "fish"
