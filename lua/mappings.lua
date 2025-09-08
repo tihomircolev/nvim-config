@@ -1,6 +1,6 @@
 local keymap = vim.keymap
 local uv = vim.uv
-
+keymap.set({'n', 't'}, "<leader>t", '<Cmd>lua require("config.quickterm").toggle()<CR>')
 -- Save key strokes (now we do not need to press shift to enter command mode).
 keymap.set({ "n", "x" }, ";", ":")
 

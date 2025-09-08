@@ -37,6 +37,12 @@ local plugin_specs = {
     end,
   },
   { 'matze/vim-move' },
+  {
+    "fei6409/log-highlight.nvim",
+    config = function()
+      require('config.log-highlight')
+    end,
+  },
   -- {
   --   "saghen/blink.cmp",
   --   -- optional: provides snippets for the snippet source
