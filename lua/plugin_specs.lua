@@ -135,6 +135,8 @@ local plugin_specs = {
     main = "render-markdown",
     opts = {},
     ft = { "markdown" },
+
+
   },
   -- A list of colorscheme plugin you may want to try. Find what suits you.
   { "navarasu/onedark.nvim",       lazy = true },

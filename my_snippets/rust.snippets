@@ -5,11 +5,11 @@ fn main() {
 endsnippet
 
 snippet let "let name[:type]=exp (let)"
-let ${1:name}${2::type}= ${3:expression};
+let ${1:name}:${2:type}= ${3:expression};
 endsnippet
 
 snippet if "if ... (if)"
-if (${1:condition}) {
+if ${1:condition} {
 	${VISUAL}${2:${VISUAL/(.*)//}}
 } ${0}
 endsnippet
