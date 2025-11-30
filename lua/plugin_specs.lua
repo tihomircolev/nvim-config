@@ -37,6 +37,20 @@ local plugin_specs = {
     end,
   },
   { 'matze/vim-move' },
+  {   "neovim/nvim-lspconfig",
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+
+  -- Autocompletion
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "L3MON4D3/LuaSnip",
+  "saadparwaiz1/cmp_luasnip",
+
+  -- NO csharp.nvim here!
+},
   {
     "fei6409/log-highlight.nvim",
     config = function()
