@@ -121,6 +121,32 @@ vim.lsp.config("*", {
     debounce_text_changes = 500,
   },
 })
+-- Custom configuration for PowerShell LSP
+if utils.executable("pwsh") then
+  local bundle_path = vim.fn.expand("~/.local/share/nvim/powershell-editor-services")
+
+  vim.lsp.config.powershell_es = {
+    cmd = {
+      "pwsh",
+      "-NoLogo",
+      "-NoProfile",
+      "-Command",
+      bundle_path .. "/PowerShellEditorServices/Start-EditorServices.ps1",
+      "-BundledModulesPath", bundle_path,
+      "-LogPath", bundle_path .. "/pses.log",
+      "-LogLevel", "Normal",
+      "-SessionDetailsPath", bundle_path .. "/session.json",
+      "-FeatureFlags", "@()",
+      "-HostName", "nvim",
+      "-HostProfileId", "nvim",
+      "-HostVersion", "1.0.0",
+      "-Stdio",
+      "-LanguageServiceOnly",  -- Add this to only start language service
+    },
+    filetypes = { "ps1", "psm1", "psd1" },
+    root_markers = { ".git" },
+  }
+end
 
 -- A mapping from lsp server name to the executable name
 local enabled_lsp_servers = {
@@ -132,6 +158,7 @@ local enabled_lsp_servers = {
   vimls = "vim-language-server",
   bashls = "bash-language-server",
   yamlls = "yaml-language-server",
+  powershell_es = "pwsh",
 }
 
 for server_name, lsp_executable in pairs(enabled_lsp_servers) do
