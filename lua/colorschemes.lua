@@ -57,14 +57,9 @@ M.colorscheme_conf = {
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
 })
-
-<<<<<<< HEAD
 -- setup must be called before loading
 vim.cmd.colorscheme "catppuccin-macchiato"
-=======
-    use_theme("edge")
->>>>>>> upstream/main
-  end,
+    -- use_theme("edge")
   --onedark = function()
   --  -- Lua
   --  require("onedark").setup {
@@ -77,7 +72,6 @@ vim.cmd.colorscheme "catppuccin-macchiato"
   --  vim.g.edge_enable_italic = 1
   --  vim.g.edge_better_performance = 1
 
-<<<<<<< HEAD
   --  vim.cmd([[colorscheme edge]])
   --end,
   --sonokai = function()
@@ -152,8 +146,7 @@ vim.cmd.colorscheme "catppuccin-macchiato"
   --citruszest = function()
   --  vim.cmd([[colorscheme citruszest]])
   --end,
-=======
-    use_theme("sonokai")
+    -- use_theme("sonokai")
   end,
   gruvbox_material = function()
     -- foreground option can be material, mix, or original
@@ -221,7 +214,6 @@ vim.cmd.colorscheme "catppuccin-macchiato"
   citruszest = function()
     use_theme("citruszest")
   end,
->>>>>>> upstream/main
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
@@ -229,7 +221,8 @@ M.rand_colorscheme = function()
   local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme_conf))
 
   -- Load the colorscheme and its settings
-  M.colorscheme_conf[colorscheme]()
+  -- M.colorscheme_conf[colorscheme]()
+  M.colorscheme_conf["catppuccin"]()
 end
 
 return M

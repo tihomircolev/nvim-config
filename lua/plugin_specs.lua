@@ -267,13 +267,10 @@ local plugin_specs = {
     enabled = function()
       return vim.g.is_win or vim.g.is_mac
     end,
-<<<<<<< HEAD
     config = true,      -- default settings
-=======
     config = function()
       require("config.gx")
     end,
->>>>>>> upstream/main
     submodules = false, -- not needed, submodules are required only for tests
   },
 
@@ -350,12 +347,9 @@ local plugin_specs = {
     end,
     },
 
-<<<<<<< HEAD
   -- Show undo history visually
   { "simnalamburt/vim-mundo",    cmd = { "MundoToggle", "MundoShow" } },
 
-=======
->>>>>>> upstream/main
   -- Manage your yank history
   {
     "gbprod/yanky.nvim",
@@ -478,7 +472,6 @@ local plugin_specs = {
     event = "VeryLazy",
   },
 
-<<<<<<< HEAD
   {
     "rhysd/vim-grammarous",
     enabled = function()
@@ -489,8 +482,6 @@ local plugin_specs = {
 
   { "chrisbra/unicode.vim",   keys = { "ga" },   cmd = { "UnicodeSearch" } },
 
-=======
->>>>>>> upstream/main
   -- Additional powerful text object for vim, this plugin should be studied
   -- carefully to use its full power
   { "wellle/targets.vim",     event = "VeryLazy" },
@@ -593,14 +584,12 @@ local plugin_specs = {
   },
 
   -- Modern matchit implementation
-<<<<<<< HEAD
   { "andymass/vim-matchup",     event = "BufRead" },
   { "tpope/vim-scriptease",     cmd = { "Scriptnames", "Messages", "Verbose" } },
 
   -- Asynchronous command execution
   { "skywind3000/asyncrun.vim", lazy = true,                                   cmd = { "AsyncRun" } },
   { "cespare/vim-toml",         ft = { "toml" },                               branch = "main" },
-=======
   {
     "andymass/vim-matchup",
     init = function()
@@ -640,7 +629,6 @@ local plugin_specs = {
     cmd = { "AsyncRun" },
   },
   { "cespare/vim-toml", ft = { "toml" }, branch = "main" },
->>>>>>> upstream/main
 
   -- Edit text area in browser using nvim
   {
