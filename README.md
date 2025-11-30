@@ -10,7 +10,7 @@
       <img alt="Windows" src="https://img.shields.io/badge/Windows-%23.svg?style=flat-square&logo=windows&color=0078D6&logoColor=white" />
     </a>
     <a href="https://github.com/neovim/neovim/releases/tag/stable">
-      <img src="https://img.shields.io/badge/Neovim-0.11.2-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
+      <img src="https://img.shields.io/badge/Neovim-0.11.5-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
     <a href="https://github.com/jdhao/nvim-config/search?l=vim-script">
       <img src="https://img.shields.io/github/languages/top/jdhao/nvim-config" alt="Top languages"/>
@@ -74,7 +74,7 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 + Code highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 + Code editing using true nvim inside browser via [firenvim](https://github.com/glacambre/firenvim).
 + Beautiful colorscheme via [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material) and other colorschemes.
-+ Markdown writing and previewing via [vim-markdown](https://github.com/preservim/vim-markdown) and [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
++ Markdown previewing via [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
 + LaTeX editing and previewing via [vimtex](https://github.com/lervag/vimtex)
 + Animated GUI style notification via [nvim-notify](https://github.com/rcarriga/nvim-notify).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
@@ -151,7 +151,6 @@ Some of the shortcuts I use frequently are listed here. In the following shortcu
 | `<leader>v`       | Normal        | Linux/macOS/Win | Reselect last pasted text                                                |
 | `<leader>ev`      | Normal        | Linux/macOS/Win | Edit Nvim config in a new tabpage                                        |
 | `<leader>sv`      | Normal        | Linux/macOS/Win | Reload Nvim config                                                       |
-| `<leader>st`      | Normal        | Linux/macOS/Win | Show highlight group for cursor text                                     |
 | `<leader>q`       | Normal        | Linux/macOS/Win | Quit current window                                                      |
 | `<leader>Q`       | Normal        | Linux/macOS/Win | Quit all window and close Nvim                                           |
 | `<leader>w`       | Normal        | Linux/macOS/Win | Save current buffer content                                              |
@@ -178,8 +177,6 @@ Some of the shortcuts I use frequently are listed here. In the following shortcu
 | `{operator}iB`    | Normal        | Linux/macOS/Win | Operate in the whole buffer, `{operator}` can be `v`, `y`, `c`, `d` etc. |
 | `Alt-k`           | Normal        | Linux/macOS/Win | Move current line or selected lines up                                   |
 | `Alt-j`           | Normal        | Linux/macOS/Win | Move current line or selected lines down                                 |
-| `Alt-m`           | Normal        | macOS/Win       | Markdown previewing in system browser                                    |
-| `Alt-Shift-m`     | Normal        | macOS/Win       | Stopping Markdown previewing in system browser                           |
 | `ctrl-u`          | Insert        | Linux/macOS/Win | Turn word under cursor to upper case                                     |
 | `ctrl-t`          | Insert        | Linux/macOS/Win | Turn word under cursor to title case                                     |
 | `jk`              | Insert        | Linux/macOS/Win | Return to Normal mode without lagging                                    |
