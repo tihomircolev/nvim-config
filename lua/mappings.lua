@@ -1,6 +1,8 @@
 local keymap = vim.keymap
 local uv = vim.uv
 
+-- Toogle set wrapping of long lines
+keymap.set("n", "<leader>lw", '<Cmd>lua require("config.wrap").toggle_wrap()<CR>', {desc = "toggle line wrap"})
 -- Toggle a floating terminal
 keymap.set({'n', 't'}, "<leader>t", '<Cmd>lua require("config.quickterm").toggle()<CR>', {desc = "toggle floating terminal"})
 
