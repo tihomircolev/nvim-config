@@ -1,7 +1,26 @@
 local keymap = vim.keymap
 local nvim_tree = require("nvim-tree")
 
+local function my_on_attach(bufnr)
+  local api = require('nvim-tree.api')
+  
+  local function opts(desc)
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+  
+  -- Copy/paste keymaps
+  vim.keymap.set('n', 'y', api.fs.copy.node, opts('Copy'))
+  vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
+  vim.keymap.set('n', 'x', api.fs.cut, opts('Cut'))
+  vim.keymap.set('n', 'd', api.fs.remove, opts('Delete'))
+  vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
+  vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
+  vim.keymap.set('n', '<Tab>', api.node.open.preview, opts('Preview'))
+  vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
+end
+
 nvim_tree.setup {
+  on_attach = my_on_attach,
   auto_reload_on_write = true,
   disable_netrw = false,
   hijack_netrw = true,
@@ -48,10 +67,10 @@ nvim_tree.setup {
     enable = false,
     show_on_dirs = false,
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
     },
   },
   filters = {
@@ -65,7 +84,7 @@ nvim_tree.setup {
     timeout = 400,
   },
   actions = {
-    use_system_clipboard = true,
+    use_system_clipboard = false,
     change_dir = {
       enable = true,
       global = false,

@@ -1,4 +1,6 @@
-<div align="center">
+<udevadm control --reload-rules
+udevadm trigger --action=addudevadm control --reload-rules
+udevadm trigger --action=adddiv align="center">
 <p>
     <a>
       <img alt="Linux" src="https://img.shields.io/badge/Linux-%23.svg?style=flat-square&logo=linux&color=FCC624&logoColor=black" />
