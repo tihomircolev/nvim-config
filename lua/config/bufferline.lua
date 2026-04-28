@@ -48,3 +48,7 @@ require("bufferline").setup {
 vim.keymap.set("n", "<space>bp", "<cmd>BufferLinePick<CR>", {
   desc = "pick a buffer",
 })
+
+vim.keymap.set("n", "<space>bc", "<cmd>BufferLinePickClose<CR>", {
+  desc = "pick a buffer to close",
+})
