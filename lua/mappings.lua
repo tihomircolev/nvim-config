@@ -15,6 +15,16 @@ keymap.set("i", "<c-u>", "<Esc>viwUea")
 -- Turn the current word into title case
 keymap.set("i", "<c-t>", "<Esc>b~lea")
 
+-- Capitalize the word under cursor: first letter upper, the rest lower (e.g. hELLO -> Hello)
+keymap.set("n", "<leader>cw", function()
+  local word = vim.fn.expand("<cword>")
+  if word == "" then
+    return
+  end
+  local cap = word:sub(1, 1):upper() .. word:sub(2):lower()
+  vim.cmd("normal! ciw" .. cap)
+end, { desc = "capitalize word under cursor" })
+
 -- Paste non-linewise text above or below current line, see https://stackoverflow.com/a/1346777/6064933
 keymap.set("n", "<leader>p", "m`o<ESC>p``", { desc = "paste below current line" })
 keymap.set("n", "<leader>P", "m`O<ESC>p``", { desc = "paste above current line" })
