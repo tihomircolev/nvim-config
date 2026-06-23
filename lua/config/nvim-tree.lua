@@ -17,6 +17,14 @@ local function my_on_attach(bufnr)
   vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
   vim.keymap.set('n', '<Tab>', api.node.open.preview, opts('Preview'))
   vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
+  
+  -- PLACE THE SNIPPET HERE (Inside the function so it can see 'opts')
+  vim.keymap.set('n', 's', function()
+  local node = api.tree.get_node()
+  if node and node.absolute_path then
+    vim.ui.open(node.absolute_path)
+  end
+end, opts('System Open'))
 end
 
 nvim_tree.setup {
@@ -58,10 +66,6 @@ nvim_tree.setup {
     enable = false,
     update_cwd = false,
     ignore_list = {},
-  },
-  system_open = {
-    cmd = "",
-    args = {},
   },
   diagnostics = {
     enable = false,
@@ -120,6 +124,25 @@ nvim_tree.setup {
     },
   },
 }
+
+-- Guard against E565 from the async git-status redraw racing a textlock
+-- (e.g. yanking via a targets.vim text object). If draw() lands during
+-- textlock, retry on the next safe tick instead of throwing.
+do
+  local ok, Renderer = pcall(require, "nvim-tree.renderer")
+  if ok and type(Renderer) == "table" and type(Renderer.draw) == "function" then
+    local orig_draw = Renderer.draw
+    local function safe_draw(self)
+      local success, err = pcall(orig_draw, self)
+      if not success and type(err) == "string" and err:find("E565") then
+        vim.schedule(function()
+          safe_draw(self)
+        end)
+      end
+    end
+    Renderer.draw = safe_draw
+  end
+end
 
 keymap.set("n", "<space>s", require("nvim-tree.api").tree.toggle, {
   silent = true,
