@@ -81,6 +81,20 @@ local plugin_specs = {
     event = "VeryLazy",
   },
   {
+  "coder/claudecode.nvim",
+  dependencies = { "folke/snacks.nvim" },  -- optional, gives a nicer terminal split
+  config = true,
+  keys = {
+    { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
+    { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
+    { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>",       desc = "Add current buffer" },
+    { "<leader>as", "<cmd>ClaudeCodeSend<cr>",        mode = "v", desc = "Send selection" },
+    { "<leader>as", "<cmd>ClaudeCodeTreeAdd<cr>",     ft = "NvimTree", desc = "Add file from tree" },
+    { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>",  desc = "Accept diff" },
+    { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",    desc = "Deny diff" },
+  },
+},
+  {
     "nvim-treesitter/nvim-treesitter",
     event = {"BufReadPost", "BufNewFile"},
     lazy = true,
@@ -762,27 +776,6 @@ local plugin_specs = {
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
-  },
-  -- {
-  --   "CopilotC-Nvim/CopilotChat.nvim",
-  --   dependencies = {
-  --     { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-  --   },
-  --   opts = {
-  --     debug = true, -- Enable debugging
-  --     -- See Configuration section for rest
-  --   },
-  --   cmd = { "CopilotChat" },
-  -- },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   config = function()
-  --     require("config.copilot")
-  --   end,
-  -- },
-  {
-    "github/copilot.vim",
   },
   {
     "smjonas/live-command.nvim",
