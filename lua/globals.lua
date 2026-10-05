@@ -57,3 +57,24 @@ vim.g.loaded_sql_completion = 1
 
 -- control how to show health check window
 vim.g.health = { style = nil }
+
+-- Guard the system clipboard so a slow or wedged X selection owner can never
+-- freeze startup or paste. On X11 the CLIPBOARD owner must answer selection
+-- requests synchronously; an Alacritty/winit terminal sitting idle on a
+-- background tag can stop serving it, which otherwise hangs the clipboard
+-- probe in viml_conf/options.vim. Wrapping the read in `timeout` caps any
+-- stall at 1s (worst case: a single empty paste) instead of a hard freeze.
+if vim.g.is_linux and vim.fn.executable("xsel") == 1 then
+  vim.g.clipboard = {
+    name = "xsel-timeout",
+    copy = {
+      ["+"] = { "xsel", "--nodetach", "-i", "-b" },
+      ["*"] = { "xsel", "--nodetach", "-i", "-p" },
+    },
+    paste = {
+      ["+"] = { "timeout", "1", "xsel", "-o", "-b" },
+      ["*"] = { "timeout", "1", "xsel", "-o", "-p" },
+    },
+    cache_enabled = 1,
+  }
+end
